@@ -1,9 +1,8 @@
-%define		qtbrver		4.6.0
 Summary:	Akonadi
 Summary(pl.UTF-8):	Akonadi -
 Name:		akonadi-googledata
 Version:	1.2.0
-Release:	1
+Release:	0.1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://libgcal.googlecode.com/files/%{name}-%{version}.tar.bz2
@@ -21,7 +20,6 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 
 %description -l pl.UTF-8
-
 
 
 %prep
@@ -46,11 +44,12 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang %{name} --all-name --with-kde
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/akonadi_gcal_resource
 %attr(755,root,root) %{_bindir}/akonadi_googledata_resource
