@@ -1,26 +1,28 @@
-Summary:	Akonadi
-Summary(pl.UTF-8):	Akonadi -
+Summary:	Google contacts and calendar Akonadi resource plugin
+Summary(pl.UTF-8):	Wtyczka zasobów Kalendarz i kontaktów Google dla Akonadi
 Name:		akonadi-googledata
 Version:	1.2.0
-Release:	0.1
-License:	GPL v2
+Release:	1
+License:	LGPL v2.1
 Group:		X11/Applications
 Source0:	http://libgcal.googlecode.com/files/%{name}-%{version}.tar.bz2
 # Source0-md5:	483bb82d4492ff20edb64d3d4edc02eb
-# svn co svn://anonsvn.kde.org/home/kde/trunk/kdesupport/akonadi-googledata/
-#Source0:	%{name}-%{version}-%{snap}.tar.bz2
 URL:		http://code.google.com/p/libgcal/
-BuildRequires:	automoc4
+BuildRequires:	akonadi-devel
 BuildRequires:	boost-devel
 BuildRequires:	cmake >= 2.6.2
 BuildRequires:	libgcal-devel
+BuildRequires:	libxslt-progs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-
+Plugin allowing synchronizing Google calendar and contacts with KDE
+applications like KOrganizer, Kontact or Kaddressbook.
 
 %description -l pl.UTF-8
-
+Wtyczka pozwalająca na synchronizację kalendarza oraz kontaktów Google
+z programami środowiska KDE, takimi jak KOrganizer, Kontakt czy
+Kaddressbook.
 
 %prep
 %setup -q
