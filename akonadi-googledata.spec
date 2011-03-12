@@ -2,7 +2,7 @@ Summary:	Google contacts and calendar Akonadi resource plugin
 Summary(pl.UTF-8):	Wtyczka zasobów Kalendarz i kontaktów Google dla Akonadi
 Name:		akonadi-googledata
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		X11/Applications
 Source0:	http://libgcal.googlecode.com/files/%{name}-%{version}.tar.bz2
@@ -49,6 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
+%doc README ChangeLog
 %attr(755,root,root) %{_bindir}/akonadi_gcal_resource
 %attr(755,root,root) %{_bindir}/akonadi_googledata_resource
 %{_datadir}/akonadi/agents/gcalresource.desktop
