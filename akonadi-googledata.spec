@@ -11,6 +11,7 @@ URL:		http://code.google.com/p/libgcal/
 BuildRequires:	akonadi-devel
 BuildRequires:	boost-devel
 BuildRequires:	cmake >= 2.6.2
+BuildRequires:	rpmbuild(macros) >= 1.600
 BuildRequires:	libgcal-devel
 BuildRequires:	libxslt-progs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -31,18 +32,13 @@ Kaddressbook.
 install -d build
 cd build
 %cmake \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
--DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
-%if "%{_lib}" == "lib64"
-	-DLIB_SUFFIX=64 \
-%endif
+	-DMYSQLD_EXECUTABLE=%{_sbindir}/mysqld \
 	..
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -57,4 +53,3 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/akonadi_googledata_resource
 %{_datadir}/akonadi/agents/gcalresource.desktop
 %{_datadir}/akonadi/agents/googledataresource.desktop
-# %{_datadir}/locale/zh_TW/LC_MESSAGES/akonadi_gcal_resource.mo # FIXME consider using %find_lang
