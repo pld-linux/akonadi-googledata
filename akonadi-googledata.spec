@@ -2,7 +2,7 @@ Summary:	Google contacts and calendar Akonadi resource plugin
 Summary(pl.UTF-8):	Wtyczka zasobów Kalendarz i kontaktów Google dla Akonadi
 Name:		akonadi-googledata
 Version:	1.2.0
-Release:	2
+Release:	3
 License:	LGPL v2.1
 Group:		X11/Applications
 Source0:	http://libgcal.googlecode.com/files/%{name}-%{version}.tar.bz2
@@ -11,9 +11,9 @@ URL:		http://code.google.com/p/libgcal/
 BuildRequires:	akonadi-devel
 BuildRequires:	boost-devel
 BuildRequires:	cmake >= 2.6.2
-BuildRequires:	rpmbuild(macros) >= 1.600
 BuildRequires:	libgcal-devel
 BuildRequires:	libxslt-progs
+BuildRequires:	rpmbuild(macros) >= 1.600
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -41,6 +41,9 @@ cd build
 rm -rf $RPM_BUILD_ROOT
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/sr@ijekavian
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/sr@ijekavianlatin
 
 %find_lang %{name} --all-name --with-kde
 
